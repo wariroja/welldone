@@ -10,7 +10,7 @@
 
 - Take payments
 
-- Marketing using customers past visit's data
+- Marketing using customers past visits' data
 
 - Easy to use interface
 
@@ -18,6 +18,6 @@
 
 
 ## Running the project:
-
+npm install
 npm start
 
