@@ -2,7 +2,6 @@ import React from 'react'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import  resourceTimelinePlugin from '@fullcalendar/resource-timegrid' // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
-
 interface TherapistsProps {
 
   onOpen: () => void;

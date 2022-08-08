@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useDisclosure } from '@chakra-ui/react';
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Modal,
   ModalOverlay,
@@ -20,14 +20,16 @@ import {
 import { Calendar } from '../Calendar/Calendar';
 interface TherapistsProps {
   therapists: {}[]
+  setBooking: (value: any) => void
 }
 
-export const Scheduler = ({therapists}: TherapistsProps) => {
+export const Scheduler = ({therapists, setBooking}: TherapistsProps) => {
   const nameInput = useRef<any>();
   const lastNameInput = useRef<any>();
   const emailInput = useRef<any>();
   const durationSelect = useRef<any>();
   const massageSelect = useRef<any>();
+  const therapistSelect  = useRef<any>();
   const startTimeInput  = useRef<any>(); 
   const endTimeInput  = useRef<any>();
   // const timeStampInput = useRef(null);  
@@ -40,12 +42,14 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
   const [ duration, setDuration] = useState(0)
   const [ startTimeHolder, setStartTimeHolder] = useState(0)
   const [ massage, setMassage] = useState('')
+  const [therapist, setTherapist] = useState('')
 
-  
+
   const onCalendarClick = (startTime: any) => {
     setStartTimeHolder(startTime.date.getTime())
     console.log({startTimeHolder})
     setStartTime(new Date(startTime.date.getTime()).toLocaleString())
+    setTherapist(startTime.resource.id)
 
   }
   const handleDuChange = (e: any) => {
@@ -92,8 +96,10 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
       massage: massageSelect?.current?.value,
       startTimeInput: startTimeInput?.current?.value, 
       endTimeInput: endTimeInput?.current?.value,
+      therapistSelect: therapistSelect?.current?.value,
     }
     console.log(bookingInfo)
+    setBooking(bookingInfo)
     onClose()
   };
 
@@ -141,16 +147,6 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
              </FormLabel>
 
              <FormLabel>
-              Start Time
-              <Input ref={startTimeInput}value={startTime} onChange={(e) => handleStartTimeChange(e)}/>
-             </FormLabel>
-     
-             <FormLabel>
-              End Time
-              <Input ref={endTimeInput} value={endTime} onChange={(e) => handleEndTimeChange(e)}/>
-             </FormLabel>
-
-             <FormLabel>
               Type of Massage
               <Select ref={massageSelect} value={massage} onChange={(e: any) => handleMassageChange(e)}>
                 <option value={''}></option>
@@ -161,6 +157,28 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
                 <option value={'pm'}>Prenatal</option>
                 <option value={'fr'}>Foot Reflexology</option>
               </Select>
+             </FormLabel>
+
+             <FormLabel>
+              Therapist
+              <Select ref={therapistSelect} value={therapist} onChange={(e: any) => handleMassageChange(e)}>
+                <option value={'a'}>Nicky</option>
+                <option value={'b'}>Diamond</option>
+                <option value={'c'}>Marissa</option>
+                <option value={'d'}>Sam</option>
+    
+              </Select>
+             </FormLabel>
+
+
+             <FormLabel>
+              Start Time
+              <Input ref={startTimeInput}value={startTime} onChange={(e) => handleStartTimeChange(e)}/>
+             </FormLabel>
+     
+             <FormLabel>
+              End Time
+              <Input ref={endTimeInput} value={endTime} onChange={(e) => handleEndTimeChange(e)}/>
              </FormLabel>
 
             </ModalBody>
