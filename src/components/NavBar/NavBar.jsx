@@ -4,7 +4,7 @@ export const Navbar = () => {
     return (
         <div>
             <div>
-                I'm navs
+               Navbar placeholder
             </div>
         </div>
     )

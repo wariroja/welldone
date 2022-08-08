@@ -1,9 +1,6 @@
 import React from 'react'
-import FullCalendar, { addDurations, findDirectChildren } from '@fullcalendar/react' // must go before plugins
-import  resourceTimelinePlugin from '@fullcalendar/resource-timegrid' // a plugin!
-import interactionPlugin from '@fullcalendar/interaction';
 import { useDisclosure } from '@chakra-ui/react';
-import { useFormik, Form, Field, FormikProvider  } from "formik";
+
 import { useState } from 'react'
 import {
   Modal,
@@ -13,16 +10,14 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  FormControl,
+
   FormLabel,
   Input, 
   Button,
   Select,
-  Stack,
+
 } from '@chakra-ui/react'
 import { Calendar } from '../Calendar/Calendar';
-import { createNoSubstitutionTemplateLiteral } from 'typescript';
-import { VariablesInAllowedPositionRule } from 'graphql';
 interface TherapistsProps {
   therapists: {}[]
 }
