@@ -66,11 +66,12 @@
   }
   .chakra-modal__content-container {
     padding: 0 30px;
-    opacity: 0.95;
   }
 
   .chakra-modal__content{
-    transform: translate(10px, 10px)
+    transform: translate(10px, 10px);
+    overflow-y: scroll hidden;
+    opacity: 0.95;
   }
 }
 .fc-day-today {
@@ -79,15 +80,27 @@
 
 .fc-today-button.fc-button.fc-button-primary {
   background-color: #CC00DD;
+  color: #ffb83e;
+  font-weight: 900;
   transition: all 0.5s;
 }
 .fc-today-button.fc-button.fc-button-primary:disbled {
   background-color: #181716;
+  cursor: not-allowed;
 }
 
 .fc-next-button.fc-button.fc-button-primary {
   background-color: #FEF65C;
   color: #181716;
+}
+.fc-next-button.fc-button.fc-button-primary:hover {
+  background-color: #181716;
+  color: #FEF65C;
+}
+
+.fc-prev-button.fc-button.fc-button-primary:hover {
+  background-color: #181716;
+  color: #FFAA1C;
 }
 
 .fc-prev-button.fc-button.fc-button-primary {
