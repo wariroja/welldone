@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useDisclosure } from '@chakra-ui/react';
 
 import { useState } from 'react'
@@ -18,12 +18,20 @@ import {
 
 } from '@chakra-ui/react'
 import { Calendar } from '../Calendar/Calendar';
+import { start } from 'repl';
 interface TherapistsProps {
   therapists: {}[]
 }
 
 export const Scheduler = ({therapists}: TherapistsProps) => {
-  console.log({therapists})
+  const nameInput = useRef<any>();
+  const lastNameInput = useRef<any>();
+  const emailInput = useRef<any>();
+  const durationSelect = useRef<any>();
+  const massageSelect = useRef<any>();
+  const startTimeInput  = useRef<any>(); 
+  const endTimeInput  = useRef<any>();
+  // const timeStampInput = useRef(null);  
     // be called when the form is submitted
   const [ name, setName ] = useState('')
   const [ lastName, setLastName] = useState('')
@@ -74,6 +82,22 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
+  
+   const handleSubmit = (form: any) => {
+    form.preventDefault()
+    let bookingInfo = {
+      name: nameInput?.current?.value,
+      lastName: lastNameInput?.current?.value,
+      email: emailInput?.current?.value,
+      duration: durationSelect?.current?.value,
+      massage: massageSelect?.current?.value,
+      startTimeInput: startTimeInput?.current?.value, 
+      endTimeInput: endTimeInput?.current?.value,
+    }
+    console.log(bookingInfo)
+    
+    onClose()
+  };
 
         return (
           <>
@@ -83,46 +107,55 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
             isOpen={isOpen}
             onClose={onClose}
           >
-            <form  autoComplete="false" >
+            <form onSubmit={handleSubmit} autoComplete="false" >
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>New Appointment</ModalHeader>
               <ModalCloseButton />
               <ModalBody pb={6}>
 
-
-           
-              {/* <Field as={Input} name="startTime.hour"/> */}
-             <FormLabel>
-              Duration
-              <Select value={duration} onChange={(e: any) => handleDuChange(e)}>
-                <option value={30}>30 minutes</option>
-                <option value={60}>60 minutes</option>
-                <option value={90}>90 minutes</option>
-                <option value={120}>120 minutes</option>
-                <option value={150}>150 minutes</option>
-                <option value={180}>180 minutes</option>
-              </Select>
-             </FormLabel>
-
              <FormLabel>
               Name
-              <Input value={name} onChange={(e: any) => handleNameChange(e)}/>
+              <Input ref={nameInput} value={name}  onChange={(e: any) => handleNameChange(e)}/>
              </FormLabel>
 
              <FormLabel>
               Lastname
-              <Input value={lastName} onChange={(e: any) => handleLastNameChange(e)}/>
+              <Input ref={lastNameInput}value={lastName} onChange={(e: any) => handleLastNameChange(e)}/>
              </FormLabel>
 
              <FormLabel>
               Email
-              <Input value={email} onChange={(e: any) => handleEmailChange(e)}/>
+              <Input ref={emailInput} value={email} onChange={(e: any) => handleEmailChange(e)}/>
+             </FormLabel>
+             
+             <FormLabel>
+              Duration
+              <Select ref={durationSelect} value={duration} onChange={(e: any) => handleDuChange(e)}>
+                <option value={0}></option>
+                <option value={30}>30 minutes</option>
+                <option value={60}>60 minutes</option>
+                <option value={90}>90 minutes</option>
+                <option value={120}>2 hours</option>
+                <option value={150}>2.5 hours</option>
+                <option value={180}>3 hours</option>
+              </Select>
+             </FormLabel>
+
+             <FormLabel>
+              Start Time
+              <Input ref={startTimeInput}value={startTime} onChange={(e) => handleStartTimeChange(e)}/>
+             </FormLabel>
+     
+             <FormLabel>
+              End Time
+              <Input ref={endTimeInput} value={endTime} onChange={(e) => handleEndTimeChange(e)}/>
              </FormLabel>
 
              <FormLabel>
               Type of Massage
-              <Select value={massage} onChange={(e: any) => handleMassageChange(e)}>
+              <Select ref={massageSelect} value={massage} onChange={(e: any) => handleMassageChange(e)}>
+                <option value={''}></option>
                 <option value={'tt'}>Thai</option>
                 <option value={'dt'}>Deep Tissue</option>
                 <option value={'sm'}>Swedish</option>
@@ -132,20 +165,9 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
               </Select>
              </FormLabel>
 
-             <FormLabel>
-              Start Time
-              <Input value={startTime} onChange={(e) => handleStartTimeChange(e)}/>
-             </FormLabel>
-     
-
-             <FormLabel>
-              End Time
-              <Input value={endTime} onChange={(e) => handleEndTimeChange(e)}/>
-             </FormLabel>
-
             </ModalBody>
               <ModalFooter>
-                <Button type='submit' onClick={onClose} colorScheme='blue' mr={3}>
+                <Button type='submit' colorScheme='blue' mr={3}>
                   Save
                 </Button>
                 <Button onClick={onClose}>Cancel</Button>

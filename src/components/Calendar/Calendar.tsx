@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import  resourceTimelinePlugin from '@fullcalendar/resource-timegrid' // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
@@ -17,6 +17,8 @@ export const Calendar = ({onOpen, onCalendarClick}: TherapistsProps) => {
     onOpen()
   }
     // be called when the form is submitted
+
+
   let bookings = [{
       id:'1',
       resourceId: 'a',
@@ -41,9 +43,9 @@ export const Calendar = ({onOpen, onCalendarClick}: TherapistsProps) => {
             }
           }}
             headerToolbar= {{
-              left: 'prev,next, today',
+              left: 'prev,next',
               center: 'title',
-              right: 'myCustomButton'
+              right: 'today',
             }}
             initialDate={new Date()}
             editable={true}

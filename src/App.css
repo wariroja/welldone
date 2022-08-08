@@ -29,6 +29,24 @@
   color: #61dafb;
 }
 
+.fc-view-harness-active > .fc-view {
+  height: 100vh;
+  margin: 20px;
+  padding-bottom: 30px;
+}
+
+.fc-view {
+  overflow-x: scroll;
+}
+
+.fc-scrollgrid.fc-scrollgrid-liquid {
+  overflow-x: scroll;
+  min-width: 600px;
+}
+
+/* .calendar-container .fc-view > table {
+  width: 500px;
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -37,3 +55,15 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width:767px) { 
+  .fc-toolbar.fc-header-toolbar {
+    padding: 0 30px;
+  }
+  .fc-toolbar {
+    flex-direction: column;
+    align-items: flex-end !important;
+  }
+  }
+
+

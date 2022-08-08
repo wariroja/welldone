@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
     "dotenv": "^16.0.1",
     "nodemon": "^2.0.19"
   }
