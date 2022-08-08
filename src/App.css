@@ -66,7 +66,32 @@
   }
   .chakra-modal__content-container {
     padding: 0 30px;
+    opacity: 0.95;
+  }
+
+  .chakra-modal__content{
+    transform: translate(10px, 10px)
   }
 }
+.fc-day-today {
+  background-color: inherit !important;
+}
 
+.fc-today-button.fc-button.fc-button-primary {
+  background-color: #CC00DD;
+  transition: all 0.5s;
+}
+.fc-today-button.fc-button.fc-button-primary:disbled {
+  background-color: #181716;
+}
+
+.fc-next-button.fc-button.fc-button-primary {
+  background-color: #FEF65C;
+  color: #181716;
+}
+
+.fc-prev-button.fc-button.fc-button-primary {
+  background-color:  #FFAA1C;
+  color: #181716;
+}
 
