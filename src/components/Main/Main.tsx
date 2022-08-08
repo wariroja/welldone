@@ -2,9 +2,6 @@ import React,  { useMemo, useState } from 'react';
 import { Navbar } from '../NavBar/NavBar';
 import { Scheduler } from '../Scheduler/Schduler'
 
-import './Main.css'
-
-
 
 export const Main = () => {
     let [therapists, setTherapists] = useState([])
@@ -19,7 +16,7 @@ export const Main = () => {
     return (
         <div>
             <Navbar />
-            <div className="marginMain">
+            <div>
                 <Scheduler therapists={therapists} />
             </div>
         </div>

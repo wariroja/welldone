@@ -55,11 +55,11 @@
     transform: rotate(360deg);
   }
 }
+.fc-toolbar.fc-header-toolbar {
+  padding: 0 30px;
+}
 
 @media screen and (max-width:767px) { 
-  .fc-toolbar.fc-header-toolbar {
-    padding: 0 30px;
-  }
   .fc-toolbar {
     flex-direction: column;
     align-items: flex-end !important;
