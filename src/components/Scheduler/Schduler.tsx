@@ -18,7 +18,6 @@ import {
 
 } from '@chakra-ui/react'
 import { Calendar } from '../Calendar/Calendar';
-import { start } from 'repl';
 interface TherapistsProps {
   therapists: {}[]
 }
@@ -95,7 +94,6 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
       endTimeInput: endTimeInput?.current?.value,
     }
     console.log(bookingInfo)
-    
     onClose()
   };
 
@@ -109,7 +107,7 @@ export const Scheduler = ({therapists}: TherapistsProps) => {
           >
             <form onSubmit={handleSubmit} autoComplete="false" >
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent >
               <ModalHeader>New Appointment</ModalHeader>
               <ModalCloseButton />
               <ModalBody pb={6}>

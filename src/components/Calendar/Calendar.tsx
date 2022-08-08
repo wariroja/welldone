@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import  resourceTimelinePlugin from '@fullcalendar/resource-timegrid' // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
@@ -34,14 +34,14 @@ export const Calendar = ({onOpen, onCalendarClick}: TherapistsProps) => {
             slotMaxTime='22:00:00'
             slotDuration='00:15:00'
             initialView='resourceTimeGridDay'
-            customButtons = {{
-              myCustomButton: {
-              text: 'New Appointment 😊',
-              click: function() {
-                onOpen();
-              }
-            }
-          }}
+          //   customButtons = {{
+          //     myCustomButton: {
+          //     text: 'New Appointment 😊',
+          //     click: function() {
+          //       onOpen();
+          //     }
+          //   }
+          // }}
             headerToolbar= {{
               left: 'prev,next',
               center: 'title',

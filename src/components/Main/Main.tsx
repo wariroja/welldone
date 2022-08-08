@@ -1,4 +1,4 @@
-import React,  { useMemo, useState, useEffect } from 'react';
+import React,  { useMemo, useState } from 'react';
 import { Navbar } from '../NavBar/NavBar';
 import { Scheduler } from '../Scheduler/Schduler'
 
