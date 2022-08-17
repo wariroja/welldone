@@ -24,10 +24,10 @@ See the [open issues](https://github.com/wariroja/welldone/issues) for a full li
 
 WellDone uses a number of open source projects to work properly:
 
-- [FullCalendar] - Open source calendar for JavaScript
-- [React] - the frontend framework we know and love
-- [node.js] - evented I/O for the backend
-- [Express] - fast node.js network app framework
+- FullCalendar - Open source calendar for JavaScript
+- React - the frontend framework we know and love
+- node.js - evented I/O for the backend
+- Express - fast node.js network app framework
 
 And of course Dillinger itself is open source with a [public repository][dill]
  on GitHub.
