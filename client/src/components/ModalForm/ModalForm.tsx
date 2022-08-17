@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
-import { useDisclosure } from '@chakra-ui/react';
 
-import { useState, useEffect } from 'react'
+
+import { useState } from 'react'
 import {
   Modal,
   ModalOverlay,
@@ -17,6 +17,7 @@ import {
   Select,
 
 } from '@chakra-ui/react'
+import { copyFileSync } from 'fs'
 interface TherapistsProps {
   therapists: {}[]
   setBooking: (value: any) => void
@@ -28,9 +29,12 @@ interface TherapistsProps {
   setStartTime: (value: any) => void
   onClose: () => void;
   onOpen: () => void;
+  calendarRef: any
+  booking: any
+  setStartTimeHolder:any
 }
 
-export const ModalForm = ({startTime, setStartTime, therapist, isOpen, onClose, setBooking, startTimeHolder}: TherapistsProps) => {
+export const ModalForm = ({startTime,setStartTimeHolder, booking,  setStartTime, therapist, isOpen, onClose, setBooking, startTimeHolder, calendarRef}: TherapistsProps) => {
   const nameInput = useRef<any>();
   const lastNameInput = useRef<any>();
   const emailInput = useRef<any>();
@@ -46,19 +50,61 @@ export const ModalForm = ({startTime, setStartTime, therapist, isOpen, onClose, 
   const [ email, setEmail] = useState('')  
 
   const [ endTime, setEndTime ] = useState('')
+  const [ endTimeHolder, setEndTimeHolder ] = useState(0)
   const [ duration, setDuration] = useState(0)
   // const [ startTimeHolder, setStartTimeHolder] = useState(0)
   const [ massage, setMassage] = useState('')
-  // const [therapist, setTherapist] = useState('')
 
 
-  const handleDuChange = (e: any) => {
-    let durationMil = e.target.value * 60 * 1000
-    let newEndTime = startTimeHolder + durationMil
-    let convertDate = new Date(newEndTime)
-    setDuration(e.target.value)
-    setEndTime(convertDate.toLocaleString())
+  const handleDu = (e:any) => {
+    let minVal = e
+    let hours;
+    let mins;
+    if(minVal === 30) {
+      hours = 0
+      mins = 30
+    }
+    if(minVal === 60){
+      hours = 1
+      mins = 0
+    }
+    if(minVal === 90){
+      hours = 1
+      mins = 30
+    }
+    if(minVal === 120){
+
+      hours = 2
+      mins = 0
+    }
+    if(minVal === 180){
+      hours = 3
+      mins = 0
+    }
+    console.log(hours, mins)
+    return [hours, mins]
   }
+  const handleDuChange = (e: any) => {
+    console.log(e.target.value)
+    let [h, m] = handleDu(e?.target?.value)
+    let startTimeH = startTimeHolder.getHours()
+    let startTimeM = startTimeHolder.getMinutes()
+    let newEndTimeH = startTimeH + h
+    let newEndTimeM = startTimeM + m
+    console.log(startTimeH, newEndTimeH, startTimeM, newEndTimeM)
+    // setEndTimeHolder(noZEndTime)
+    // setStartTimeHolder(noZStartTime)
+    // setDuration(e.target.value)
+    // setEndTime(convertDate.toLocaleString())
+
+  }
+  const makeUsableDate = (convertDate: any) => {
+    let result = convertDate.toISOString().slice(0,-2).trim()
+    console.log({result})
+    return result
+
+  }
+
 
   const handleNameChange = (e: any) => {
     setName(e.target.value)
@@ -94,23 +140,23 @@ export const ModalForm = ({startTime, setStartTime, therapist, isOpen, onClose, 
       duration: durationSelect?.current?.value,
       massage: massageSelect?.current?.value,
       startTime: startTimeHolder, 
-      endTime: endTimeInput?.current?.value,
+      endTime: endTimeHolder,
       therapist: therapistSelect?.current?.value,
     }
-    console.log(bookingInfo)
-    fetch("http://localhost:9000/api", {
-      method: 'POST',
-      headers: {
-        "Accept": "application/json",
-        'Content-type': "application/json"
-      },
-      body: JSON.stringify(bookingInfo)
-    })
-    .then((response) => response.text())
-    .then((data) => console.log(data));
-  
+      fetch("http://localhost:9000/api", {
+        method: 'POST',
+        headers: {
+          "Accept": "application/json",
+          'Content-type': "application/json"
+        },
+        body: JSON.stringify(bookingInfo)
+      })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+    setBooking(bookingInfo)
     onClose()
   };
+
 
         return (
           <>
