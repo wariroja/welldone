@@ -1,5 +1,7 @@
 # WellDone 💆
 ### Wellness Done Right. With a little help of a friend: Welldone
+![2022-08-17 11 46 31](https://user-images.githubusercontent.com/40623643/185218821-2d2cc9e3-cab8-46c0-bd65-6a2759559c6c.gif)
+
 
 Built using FullCalendar React-Express-Node-NeDB. WellDone is a sceduling optmization software that aims to solve problems for spas and massage store owners. 
 
