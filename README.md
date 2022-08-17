@@ -15,7 +15,7 @@ Built using FullCalendar React-Express-Node-NeDB. WellDone is a sceduling optmiz
 - [ ] Multi-language Support
     - [ ] Thai
     - [ ] Spanish
-    - [ ] Chinenes
+    - [ ] Chinese
 
 See the [open issues](https://github.com/wariroja/welldone/issues) for a full list of proposed features (and known issues).
 
