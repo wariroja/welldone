@@ -19,19 +19,6 @@ Built using FullCalendar React-Express-Node-NeDB. WellDone is a sceduling optmiz
 
 See the [open issues](https://github.com/wariroja/welldone/issues) for a full list of proposed features (and known issues).
 
-
-## Tech
-
-WellDone uses a number of open source projects to work properly:
-
-- FullCalendar - Open source calendar for JavaScript
-- React - the frontend framework we know and love
-- node.js - evented I/O for the backend
-- Express - fast node.js network app framework
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
-
 ## Installation
 
 WellDone requires [Node.js](https://nodejs.org/) v10+ to run.
